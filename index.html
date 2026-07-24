@@ -9,242 +9,173 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --navy:#0B2340;
-    --navy-2:#12335C;
-    --teal:#0F6E56;
-    --teal-strong:#0B4F3D;
-    --teal-light:#E4F4EE;
-    --gold:#B08D2A;
-    --gold-light:#F4EDD9;
-    --bg:#F3F5F7;
-    --surface:#FFFFFF;
-    --ink:#131C26;
-    --slate:#57626D;
-    --slate-light:#8A94A0;
-    --border:#DFE3E8;
-    --danger:#B3261E;
-    --danger-light:#FBEAE9;
+    --navy:#0B2340; --navy-2:#12335C;
+    --teal:#0F6E56; --teal-strong:#0B4F3D; --teal-light:#E4F4EE;
+    --gold:#B08D2A; --gold-light:#F4EDD9;
+    --bg:#F3F5F7; --surface:#FFFFFF;
+    --ink:#131C26; --slate:#57626D; --slate-light:#8A94A0;
+    --border:#DFE3E8; --danger:#B3261E; --danger-light:#FBEAE9;
     --radius:10px;
   }
   *{box-sizing:border-box;}
-  body{
-    margin:0;
-    background:var(--bg);
-    color:var(--ink);
-    font-family:'IBM Plex Sans', sans-serif;
-    -webkit-font-smoothing:antialiased;
-  }
-  h1,h2,h3,.display{
-    font-family:'Space Grotesk', sans-serif;
-    letter-spacing:-0.01em;
-  }
-  code, .mono{
-    font-family:'IBM Plex Mono', monospace;
-  }
+  body{margin:0; background:var(--bg); color:var(--ink); font-family:'IBM Plex Sans', sans-serif; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3,.display{font-family:'Space Grotesk', sans-serif; letter-spacing:-0.01em;}
+  code,.mono{font-family:'IBM Plex Mono', monospace;}
   a{color:inherit;}
 
-  /* ---------- top nav ---------- */
-  .topnav{
-    position:sticky; top:0; z-index:50;
-    background:var(--navy);
-    color:#fff;
-    display:flex; align-items:center; justify-content:space-between;
-    padding:14px 32px;
-    border-bottom:3px solid var(--gold);
-  }
-  .brand{display:flex; align-items:center; gap:10px;}
-  .brand-mark{
-    width:30px;height:30px;border-radius:7px;
-    background:linear-gradient(135deg, var(--teal) 0%, var(--teal-strong) 100%);
-    display:flex;align-items:center;justify-content:center;
-    font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:15px; color:#fff;
-  }
+  .topnav{position:sticky; top:0; z-index:50; background:var(--navy); color:#fff; padding:0 28px; border-bottom:3px solid var(--gold);}
+  .topnav-row{display:flex; align-items:center; justify-content:space-between; padding:13px 0;}
+  .brand{display:flex; align-items:center; gap:10px; cursor:pointer;}
+  .brand-mark{width:30px;height:30px;border-radius:7px; background:linear-gradient(135deg, var(--teal) 0%, var(--teal-strong) 100%); display:flex;align-items:center;justify-content:center; font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:15px; color:#fff;}
   .brand-name{font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:18px;}
   .brand-name span{color:var(--gold); font-weight:600;}
   .navtabs{display:flex; gap:4px;}
-  .navtab{
-    padding:9px 16px; border-radius:8px; font-size:14px; font-weight:500;
-    cursor:pointer; color:#CBD6E2; border:1px solid transparent;
-    transition:background .15s, color .15s;
-  }
+  .navtab{padding:9px 15px; border-radius:8px; font-size:13.5px; font-weight:500; cursor:pointer; color:#CBD6E2; border:1px solid transparent; transition:background .15s, color .15s;}
   .navtab:hover{background:rgba(255,255,255,0.06); color:#fff;}
   .navtab.active{background:rgba(255,255,255,0.1); color:#fff; border-color:rgba(255,255,255,0.12);}
-  .navcta{
-    background:var(--teal); color:#fff; padding:9px 16px; border-radius:8px;
-    font-size:14px; font-weight:500; cursor:pointer; border:none;
-    font-family:'IBM Plex Sans', sans-serif;
-  }
-  .navcta:hover{background:var(--teal-strong);}
+  .navcta-group{display:flex; gap:8px; align-items:center;}
+  .navcta{padding:9px 15px; border-radius:8px; font-size:13.5px; font-weight:500; cursor:pointer; border:1px solid rgba(255,255,255,0.2); background:transparent; color:#fff; font-family:'IBM Plex Sans', sans-serif;}
+  .navcta:hover{background:rgba(255,255,255,0.08);}
+  .navcta.solid{background:var(--teal); border-color:var(--teal);}
+  .navcta.solid:hover{background:var(--teal-strong);}
+  .session-pill{display:flex; align-items:center; gap:8px; background:rgba(255,255,255,0.08); padding:6px 12px; border-radius:20px; font-size:12.5px; color:#CBD6E2;}
+  .session-pill .dotgreen{width:7px;height:7px;border-radius:50%;background:#6FD9B8;}
 
-  .page{display:none; max-width:1180px; margin:0 auto; padding:44px 32px 80px;}
+  .page{display:none; max-width:1180px; margin:0 auto; padding:44px 28px 80px;}
   .page.active{display:block;}
+  .page-narrow{max-width:640px;}
 
-  /* ---------- home / hero ---------- */
-  .eyebrow{
-    display:inline-flex; align-items:center; gap:8px;
-    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.06em;
-    color:var(--teal-strong); background:var(--teal-light); border-radius:20px;
-    padding:5px 12px; margin-bottom:18px; text-transform:uppercase;
-  }
+  .eyebrow{display:inline-flex; align-items:center; gap:8px; font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.06em; color:var(--teal-strong); background:var(--teal-light); border-radius:20px; padding:5px 12px; margin-bottom:18px; text-transform:uppercase;}
+  .section-label{font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.06em; color:var(--slate-light); text-transform:uppercase; margin:0 0 10px;}
+
+  /* ---- home ---- */
   .hero{display:grid; grid-template-columns:1.05fr 0.95fr; gap:48px; align-items:center;}
-  .hero h1{font-size:42px; font-weight:600; line-height:1.15; margin:0 0 18px; color:var(--navy);}
-  .hero p.lede{font-size:16px; color:var(--slate); line-height:1.65; max-width:480px; margin:0 0 28px;}
+  .hero h1{font-size:40px; font-weight:600; line-height:1.15; margin:0 0 18px; color:var(--navy);}
+  .hero p.lede{font-size:15.5px; color:var(--slate); line-height:1.65; max-width:480px; margin:0 0 28px;}
   .hero-cta{display:flex; gap:12px;}
-  .btn-primary{
-    background:var(--navy); color:#fff; padding:12px 22px; border-radius:8px;
-    font-size:14px; font-weight:500; border:none; cursor:pointer;
-    font-family:'IBM Plex Sans', sans-serif;
-  }
+  .btn-primary{background:var(--navy); color:#fff; padding:12px 22px; border-radius:8px; font-size:14px; font-weight:500; border:none; cursor:pointer; font-family:'IBM Plex Sans', sans-serif;}
   .btn-primary:hover{background:var(--navy-2);}
-  .btn-secondary{
-    background:#fff; color:var(--navy); padding:12px 22px; border-radius:8px;
-    font-size:14px; font-weight:500; border:1px solid var(--border); cursor:pointer;
-    font-family:'IBM Plex Sans', sans-serif;
-  }
+  .btn-secondary{background:#fff; color:var(--navy); padding:12px 22px; border-radius:8px; font-size:14px; font-weight:500; border:1px solid var(--border); cursor:pointer; font-family:'IBM Plex Sans', sans-serif;}
   .btn-secondary:hover{border-color:var(--slate-light);}
-
-  /* console */
-  .console{
-    background:#0C1621; border-radius:12px; padding:0; overflow:hidden;
-    box-shadow:0 12px 30px rgba(11,35,64,0.18);
-  }
-  .console-head{
-    display:flex; align-items:center; gap:8px; padding:12px 16px;
-    border-bottom:1px solid rgba(255,255,255,0.08);
-  }
+  .console{background:#0C1621; border-radius:12px; overflow:hidden; box-shadow:0 12px 30px rgba(11,35,64,0.18);}
+  .console-head{display:flex; align-items:center; gap:8px; padding:12px 16px; border-bottom:1px solid rgba(255,255,255,0.08);}
   .dot{width:9px;height:9px;border-radius:50%;}
   .console-head .label{margin-left:8px; font-size:12px; color:#8FA0B3; font-family:'IBM Plex Mono', monospace;}
   .console-body{padding:20px; min-height:230px;}
   .console-line{font-family:'IBM Plex Mono', monospace; font-size:12.5px; line-height:1.85; white-space:pre-wrap; color:#CBD6E2;}
-  .console-line .k{color:#6FD9B8;}
-  .console-line .s{color:#E8C275;}
-  .console-line .m{color:#7FB2E8;}
-  .console-tag{
-    display:inline-block; font-size:10.5px; font-family:'IBM Plex Mono', monospace;
-    color:#6FD9B8; border:1px solid rgba(111,217,184,0.35); border-radius:5px;
-    padding:2px 7px; margin-bottom:12px;
-  }
+  .console-line.k{color:#6FD9B8;} .console-line.m{color:#7FB2E8;}
+  .console-tag{display:inline-block; font-size:10.5px; font-family:'IBM Plex Mono', monospace; color:#6FD9B8; border:1px solid rgba(111,217,184,0.35); border-radius:5px; padding:2px 7px; margin-bottom:12px;}
 
-  /* category grid */
-  .section-label{
-    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.06em;
-    color:var(--slate-light); text-transform:uppercase; margin:0 0 10px;
-  }
-  .cat-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:70px;}
-  .cat-card{
-    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
-    padding:18px; cursor:pointer; transition:border-color .15s, transform .15s;
-  }
-  .cat-card:hover{border-color:var(--teal); transform:translateY(-2px);}
-  .cat-card .n{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--slate-light); margin-bottom:10px;}
-  .cat-card h3{font-size:15px; margin:0 0 6px; color:var(--navy);}
-  .cat-card p{font-size:12.5px; color:var(--slate); margin:0; line-height:1.5;}
+  .twopanel{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:70px;}
+  .info-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:26px;}
+  .info-card h3{font-size:17px; margin:0 0 8px; color:var(--navy);}
+  .info-card p{font-size:13.5px; color:var(--slate); line-height:1.6; margin:0 0 16px;}
+  .info-card a.link{font-size:13px; color:var(--teal-strong); font-weight:500; cursor:pointer;}
 
-  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:70px;}
-  .step{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px;}
-  .step .num{
-    font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:13px; color:#fff;
-    background:var(--teal); width:26px; height:26px; border-radius:50%;
-    display:flex; align-items:center; justify-content:center; margin-bottom:14px;
-  }
-  .step h3{font-size:15px; margin:0 0 6px; color:var(--navy);}
-  .step p{font-size:13px; color:var(--slate); margin:0; line-height:1.55;}
+  .rails-strip{display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap; margin-top:60px; padding:22px; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);}
+  .rail-badge{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--slate); border:1px solid var(--border); border-radius:20px; padding:6px 14px;}
 
-  /* ---------- API catalog page ---------- */
-  .catalog-head{display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:26px;}
-  .catalog-head h2{font-size:26px; margin:0; color:var(--navy);}
-  .catalog-head p{font-size:13.5px; color:var(--slate); margin:6px 0 0;}
-  .search-bar{
-    width:260px; padding:9px 12px; border-radius:8px; border:1px solid var(--border);
-    font-size:13px; font-family:'IBM Plex Sans', sans-serif; background:#fff;
-  }
+  .cta-band{margin-top:60px; background:var(--navy); border-radius:12px; padding:32px; display:flex; align-items:center; justify-content:space-between; gap:20px;}
+  .cta-band h3{color:#fff; font-size:19px; margin:0 0 6px;}
+  .cta-band p{color:#CBD6E2; font-size:13.5px; margin:0;}
+
+  footer{text-align:center; padding:30px; font-size:12px; color:var(--slate-light); border-top:1px solid var(--border); margin-top:40px;}
+
+  /* ---- getting started ---- */
+  .steptrack{position:relative; margin-top:20px;}
+  .steprow{display:grid; grid-template-columns:48px 1fr; gap:20px; padding-bottom:36px; position:relative;}
+  .steprow:last-child{padding-bottom:0;}
+  .stepline{position:absolute; left:23px; top:48px; bottom:0; width:2px; background:var(--border);}
+  .steprow:last-child .stepline{display:none;}
+  .stepnum{width:48px; height:48px; border-radius:50%; background:var(--teal-light); color:var(--teal-strong); display:flex; align-items:center; justify-content:center; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:17px; z-index:1;}
+  .stepcontent h3{font-size:16.5px; margin:0 0 6px; color:var(--navy);}
+  .stepcontent p{font-size:13.5px; color:var(--slate); line-height:1.6; margin:0 0 10px; max-width:560px;}
+  .stepcontent ul{margin:8px 0 0; padding-left:18px;}
+  .stepcontent li{font-size:13px; color:var(--slate); margin-bottom:5px;}
+  .step-cta{font-size:12.5px; color:var(--teal-strong); font-weight:500; cursor:pointer;}
+  .parallel-badge{display:inline-block; font-size:10.5px; font-family:'IBM Plex Mono', monospace; background:var(--gold-light); color:var(--gold); padding:2px 8px; border-radius:5px; margin-left:8px;}
+
+  /* ---- catalog ---- */
+  .cat-tabs{display:flex; gap:6px; margin-bottom:22px; border-bottom:1px solid var(--border); padding-bottom:0;}
+  .cat-tab{padding:10px 16px; font-size:13.5px; font-weight:500; color:var(--slate); cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px;}
+  .cat-tab.active{color:var(--navy); border-bottom-color:var(--teal);}
+  .catalog-intro{font-size:13.5px; color:var(--slate); margin:0 0 20px; max-width:680px; line-height:1.6;}
   .catalog-list{display:flex; flex-direction:column; gap:10px;}
-  .catalog-row{
-    display:grid; grid-template-columns:110px 1fr 190px 90px; align-items:center; gap:16px;
-    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
-    padding:16px 18px;
-  }
-  .method{
-    font-family:'IBM Plex Mono', monospace; font-size:11.5px; font-weight:500;
-    padding:4px 9px; border-radius:5px; text-align:center; width:fit-content;
-  }
-  .method.get{background:#E6F1FB; color:#0C447C;}
-  .method.post{background:var(--teal-light); color:var(--teal-strong);}
+  .catalog-row{display:grid; grid-template-columns:110px 1fr 120px; align-items:center; gap:16px; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:15px 18px;}
+  .method{font-family:'IBM Plex Mono', monospace; font-size:11.5px; font-weight:500; padding:4px 9px; border-radius:5px; text-align:center; width:fit-content;}
+  .method.get{background:#E6F1FB; color:#0C447C;} .method.post{background:var(--teal-light); color:var(--teal-strong);}
   .catalog-row .path{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--navy);}
   .catalog-row .desc{font-size:12.5px; color:var(--slate); margin-top:3px;}
-  .catalog-row .cat-tag{font-size:11.5px; color:var(--slate); font-family:'IBM Plex Mono', monospace;}
-  .try-link{
-    font-size:12.5px; color:var(--teal-strong); font-weight:500; cursor:pointer;
-    border:1px solid var(--teal); border-radius:6px; padding:6px 12px; text-align:center; background:#fff;
-  }
+  .try-link{font-size:12.5px; color:var(--teal-strong); font-weight:500; cursor:pointer; border:1px solid var(--teal); border-radius:6px; padding:7px 12px; text-align:center; background:#fff;}
   .try-link:hover{background:var(--teal-light);}
 
-  /* ---------- explorer page ---------- */
-  .explorer{display:grid; grid-template-columns:250px 1fr 340px; gap:0; border:1px solid var(--border); border-radius:12px; overflow:hidden; background:#fff;}
-  .exp-col{padding:20px;}
-  .exp-nav{background:#FAFBFC; border-right:1px solid var(--border);}
+  /* ---- console / explorer ---- */
+  .subnav{display:flex; gap:6px; margin-bottom:20px;}
+  .subtab{padding:8px 16px; border-radius:8px; font-size:13px; font-weight:500; cursor:pointer; color:var(--slate); border:1px solid var(--border); background:#fff;}
+  .subtab.active{background:var(--navy); color:#fff; border-color:var(--navy);}
+  .explorer{display:grid; grid-template-columns:240px 1fr; gap:0; border:1px solid var(--border); border-radius:12px; overflow:hidden; background:#fff;}
+  .exp-nav{background:#FAFBFC; border-right:1px solid var(--border); padding:20px;}
   .exp-cat{font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.05em; color:var(--slate-light); margin:16px 0 8px;}
   .exp-cat:first-child{margin-top:0;}
-  .exp-item{
-    font-size:13px; padding:8px 10px; border-radius:6px; cursor:pointer; color:var(--slate);
-    display:flex; align-items:center; gap:8px;
-  }
+  .exp-item{font-size:13px; padding:8px 10px; border-radius:6px; cursor:pointer; color:var(--slate); display:flex; align-items:center; gap:8px;}
   .exp-item:hover{background:#EFF2F5;}
   .exp-item.active{background:var(--teal-light); color:var(--teal-strong); font-weight:500;}
   .exp-item .m{font-family:'IBM Plex Mono', monospace; font-size:9.5px; padding:1px 5px; border-radius:4px;}
-  .exp-item .m.get{background:#E6F1FB;color:#0C447C;}
-  .exp-item .m.post{background:var(--teal-light);color:var(--teal-strong);}
-  .exp-main{border-right:1px solid var(--border);}
-  .exp-main h3.path{font-family:'IBM Plex Mono', monospace; font-size:16px; margin:0 0 8px; color:var(--navy);}
-  .exp-main p.desc{font-size:13.5px; color:var(--slate); line-height:1.6; margin:0 0 18px;}
-  .exp-field-label{font-size:11.5px; color:var(--slate-light); text-transform:uppercase; letter-spacing:0.05em; font-family:'IBM Plex Mono', monospace; margin:16px 0 8px;}
-  textarea#reqbody{
-    width:100%; min-height:140px; border-radius:8px; border:1px solid var(--border);
-    background:#FAFBFC; font-family:'IBM Plex Mono', monospace; font-size:12.5px; padding:12px;
-    color:var(--ink); resize:vertical;
-  }
-  .run-row{display:flex; align-items:center; gap:12px; margin-top:16px;}
-  .btn-run{
-    background:var(--teal); color:#fff; border:none; padding:10px 22px; border-radius:8px;
-    font-size:13.5px; font-weight:500; cursor:pointer; font-family:'IBM Plex Sans', sans-serif;
-  }
+  .exp-item .m.get{background:#E6F1FB;color:#0C447C;} .exp-item .m.post{background:var(--teal-light);color:var(--teal-strong);}
+  .exp-doc{padding:26px 30px;}
+  .exp-doc h2.epath{font-family:'IBM Plex Mono', monospace; font-size:19px; margin:0 0 4px; color:var(--navy);}
+  .exp-doc p.edesc{font-size:13.5px; color:var(--slate); line-height:1.6; margin:0 0 16px;}
+  .prereq-list{margin:0 0 24px; padding-left:18px;}
+  .prereq-list li{font-size:12.5px; color:var(--slate); margin-bottom:4px;}
+  .doc-h4{font-size:12px; text-transform:uppercase; letter-spacing:0.05em; color:var(--slate-light); font-family:'IBM Plex Mono', monospace; margin:26px 0 10px;}
+  .env-toggle{display:flex; gap:6px; margin-bottom:10px;}
+  .env-btn{font-size:11.5px; padding:5px 10px; border-radius:6px; border:1px solid var(--border); background:#fff; color:var(--slate); cursor:pointer;}
+  .env-btn.active{background:var(--navy); color:#fff; border-color:var(--navy);}
+  .endpoint-url{font-family:'IBM Plex Mono', monospace; font-size:12.5px; background:#FAFBFC; border:1px solid var(--border); border-radius:6px; padding:9px 12px; color:var(--navy); overflow-x:auto;}
+  table.doc-table{width:100%; border-collapse:collapse; font-size:12px; margin-bottom:6px;}
+  table.doc-table th{text-align:left; background:#FAFBFC; color:var(--slate-light); font-family:'IBM Plex Mono', monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:0.03em; padding:8px 10px; border:1px solid var(--border);}
+  table.doc-table td{padding:8px 10px; border:1px solid var(--border); color:var(--ink); font-size:12px;}
+  table.doc-table td.mono-cell{font-family:'IBM Plex Mono', monospace; color:var(--teal-strong);}
+  .codeblock{background:#0C1621; color:#CBD6E2; border-radius:8px; padding:14px 16px; font-family:'IBM Plex Mono', monospace; font-size:12px; line-height:1.7; white-space:pre-wrap; overflow-x:auto; margin-bottom:6px;}
+  .lang-tabs{display:flex; gap:6px; margin-bottom:10px;}
+  .lang-tab{font-size:11.5px; font-family:'IBM Plex Mono', monospace; padding:5px 11px; border-radius:6px; cursor:pointer; color:var(--slate); border:1px solid var(--border); background:#fff;}
+  .lang-tab.active{background:var(--navy); color:#fff; border-color:var(--navy);}
+  .err-row{display:flex; gap:10px; align-items:baseline; padding:6px 0; border-bottom:1px solid var(--border); font-size:12px;}
+  .err-code{font-family:'IBM Plex Mono', monospace; color:var(--danger); background:var(--danger-light); border-radius:5px; padding:2px 7px; font-size:11px; min-width:52px; text-align:center;}
+  .err-code.ok{color:var(--teal-strong); background:var(--teal-light);}
+
+  .tryit-panel{margin-top:30px; background:#FAFBFC; border:1px solid var(--border); border-radius:10px; padding:22px;}
+  .tryit-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:14px;}
+  .tryit-head h4{font-size:14px; margin:0; color:var(--navy);}
+  .auto-auth{display:flex; align-items:center; gap:8px; font-size:11.5px; color:var(--teal-strong); background:var(--teal-light); padding:5px 10px; border-radius:20px;}
+  textarea#reqbody{width:100%; min-height:120px; border-radius:8px; border:1px solid var(--border); background:#fff; font-family:'IBM Plex Mono', monospace; font-size:12.5px; padding:12px; color:var(--ink); resize:vertical;}
+  .run-row{display:flex; align-items:center; gap:12px; margin-top:14px;}
+  .btn-run{background:var(--teal); color:#fff; border:none; padding:10px 22px; border-radius:8px; font-size:13.5px; font-weight:500; cursor:pointer; font-family:'IBM Plex Sans', sans-serif;}
   .btn-run:hover{background:var(--teal-strong);}
   .run-hint{font-size:12px; color:var(--slate-light);}
-  .exp-resp{background:#0C1621; color:#CBD6E2;}
-  .resp-status{
-    display:inline-flex; align-items:center; gap:6px; font-family:'IBM Plex Mono', monospace;
-    font-size:12px; padding:4px 10px; border-radius:5px; margin-bottom:14px;
-  }
+  .resp-console{margin-top:16px; background:#0C1621; color:#CBD6E2; border-radius:8px; padding:16px;}
+  .resp-status{display:inline-flex; align-items:center; gap:6px; font-family:'IBM Plex Mono', monospace; font-size:12px; padding:4px 10px; border-radius:5px; margin-bottom:12px;}
   .resp-status.ok{background:rgba(111,217,184,0.15); color:#6FD9B8;}
   .resp-status.pending{background:rgba(255,255,255,0.08); color:#8FA0B3;}
-  pre#respbody{font-family:'IBM Plex Mono', monospace; font-size:12px; line-height:1.7; white-space:pre-wrap; margin:0; color:#CBD6E2;}
-  .code-tabs{display:flex; gap:6px; margin-top:20px; border-top:1px solid rgba(255,255,255,0.08); padding-top:14px;}
-  .code-tab{font-size:11px; font-family:'IBM Plex Mono', monospace; color:#8FA0B3; padding:4px 9px; border-radius:5px; cursor:default;}
-  .code-tab.on{background:rgba(255,255,255,0.08); color:#fff;}
+  pre#respbody{font-family:'IBM Plex Mono', monospace; font-size:12px; line-height:1.7; white-space:pre-wrap; margin:0;}
 
-  /* ---------- dashboard page ---------- */
+  /* ---- dashboard ---- */
   .kpi-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:24px;}
   .kpi-card{background:#fff; border:1px solid var(--border); border-radius:var(--radius); padding:18px;}
   .kpi-card .lab{font-size:12px; color:var(--slate-light); font-family:'IBM Plex Mono', monospace;}
   .kpi-card .val{font-family:'Space Grotesk', sans-serif; font-size:28px; font-weight:600; color:var(--navy); margin-top:6px;}
   .kpi-card .delta{font-size:12px; color:var(--teal-strong); margin-top:4px;}
-
   .dash-grid{display:grid; grid-template-columns:1.4fr 1fr; gap:14px; margin-bottom:24px;}
   .panel{background:#fff; border:1px solid var(--border); border-radius:var(--radius); padding:20px;}
   .panel h3{font-size:14.5px; margin:0 0 18px; color:var(--navy);}
   .bars{display:flex; align-items:flex-end; gap:10px; height:150px;}
   .bar{flex:1; background:var(--teal); border-radius:4px 4px 0 0; position:relative;}
   .bar .bl{position:absolute; bottom:-20px; left:0; right:0; text-align:center; font-size:10px; color:var(--slate-light); font-family:'IBM Plex Mono', monospace;}
-
   .donut{display:flex; align-items:center; gap:20px;}
   .legend-item{display:flex; align-items:center; gap:8px; font-size:12.5px; color:var(--slate); margin-bottom:8px;}
   .sw{width:10px; height:10px; border-radius:3px;}
-
   table.apps{width:100%; border-collapse:collapse;}
-  table.apps th{
-    text-align:left; font-size:11px; color:var(--slate-light); text-transform:uppercase;
-    letter-spacing:0.04em; font-family:'IBM Plex Mono', monospace; padding:0 0 10px; border-bottom:1px solid var(--border);
-  }
+  table.apps th{text-align:left; font-size:11px; color:var(--slate-light); text-transform:uppercase; letter-spacing:0.04em; font-family:'IBM Plex Mono', monospace; padding:0 0 10px; border-bottom:1px solid var(--border);}
   table.apps td{font-size:13px; padding:12px 0; border-bottom:1px solid var(--border); color:var(--ink);}
   .status-pill{font-size:11px; font-family:'IBM Plex Mono', monospace; padding:3px 9px; border-radius:20px;}
   .status-pill.active{background:var(--teal-light); color:var(--teal-strong);}
@@ -252,33 +183,65 @@
   .status-pill.revoked{background:var(--danger-light); color:var(--danger);}
   .manage-link{font-size:12px; color:var(--slate); border:1px solid var(--border); padding:5px 10px; border-radius:6px; cursor:default;}
 
-  footer{text-align:center; padding:30px; font-size:12px; color:var(--slate-light); border-top:1px solid var(--border); margin-top:40px;}
+  /* ---- forms: register / login ---- */
+  .form-card{background:#fff; border:1px solid var(--border); border-radius:12px; padding:32px;}
+  .form-card h2{font-size:23px; margin:0 0 6px; color:var(--navy);}
+  .form-card p.sub{font-size:13.5px; color:var(--slate); margin:0 0 24px;}
+  .form-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .field{display:flex; flex-direction:column; gap:6px; margin-bottom:16px;}
+  .field.full{grid-column:1 / -1;}
+  .field label{font-size:12.5px; color:var(--slate); font-weight:500;}
+  .field label .req{color:var(--danger);}
+  .field label .opt{color:var(--slate-light); font-weight:400;}
+  .field input[type=text], .field input[type=email], .field input[type=tel], .field input[type=password]{
+    padding:10px 12px; border-radius:8px; border:1px solid var(--border); font-size:13.5px; font-family:'IBM Plex Sans', sans-serif; background:#FAFBFC;
+  }
+  .upload-field{border:1.5px dashed var(--border); border-radius:8px; padding:16px; text-align:center; font-size:12.5px; color:var(--slate-light); cursor:pointer;}
+  .upload-field:hover{border-color:var(--teal);}
+  .check-row{display:flex; align-items:center; gap:8px; font-size:12.5px; color:var(--slate); margin:6px 0 20px;}
+  .form-foot{display:flex; align-items:center; justify-content:space-between; margin-top:8px;}
+  .form-link{font-size:12.5px; color:var(--teal-strong); cursor:pointer; font-weight:500;}
+  .progress-hint{font-size:11.5px; color:var(--slate-light); margin-top:10px;}
+
+  /* ---- help center ---- */
+  .faq-item{border-bottom:1px solid var(--border); padding:16px 0;}
+  .faq-q{display:flex; align-items:center; justify-content:space-between; cursor:pointer; font-size:14.5px; font-weight:500; color:var(--navy);}
+  .faq-a{font-size:13.5px; color:var(--slate); line-height:1.6; max-height:0; overflow:hidden; transition:max-height .2s ease;}
+  .faq-a-inner{padding-top:10px;}
+  .faq-item.open .faq-a{max-height:200px;}
+  .faq-chevron{font-size:16px; color:var(--slate-light); transition:transform .2s;}
+  .faq-item.open .faq-chevron{transform:rotate(45deg);}
+  .contact-band{margin-top:34px; background:var(--navy); border-radius:12px; padding:26px 30px; display:flex; align-items:center; justify-content:space-between; gap:20px;}
+  .contact-band h3{color:#fff; font-size:17px; margin:0 0 4px;}
+  .contact-band p{color:#CBD6E2; font-size:13px; margin:0;}
 
   @media (max-width:900px){
-    .hero{grid-template-columns:1fr;}
-    .cat-grid{grid-template-columns:repeat(2,1fr);}
-    .steps{grid-template-columns:1fr;}
-    .explorer{grid-template-columns:1fr;}
-    .kpi-grid{grid-template-columns:repeat(2,1fr);}
-    .dash-grid{grid-template-columns:1fr;}
-    .navtabs{display:none;}
+    .hero{grid-template-columns:1fr;} .twopanel{grid-template-columns:1fr;}
+    .explorer{grid-template-columns:1fr;} .kpi-grid{grid-template-columns:repeat(2,1fr);}
+    .dash-grid{grid-template-columns:1fr;} .navtabs{display:none;} .form-grid{grid-template-columns:1fr;}
   }
 </style>
 </head>
 <body>
 
 <div class="topnav">
-  <div class="brand">
-    <div class="brand-mark">AN</div>
-    <div class="brand-name">ABHI <span>Nexus</span></div>
+  <div class="topnav-row">
+    <div class="brand" onclick="goTo('home')">
+      <div class="brand-mark">AN</div>
+      <div class="brand-name">ABHI <span>Nexus</span></div>
+    </div>
+    <div class="navtabs">
+      <div class="navtab active" data-page="home">Home</div>
+      <div class="navtab" data-page="start">Getting started</div>
+      <div class="navtab" data-page="catalog">API catalog</div>
+      <div class="navtab" data-page="console">Console</div>
+      <div class="navtab" data-page="help">Help center</div>
+    </div>
+    <div class="navcta-group" id="navctaGroup">
+      <button class="navcta" onclick="goTo('login')">Log in</button>
+      <button class="navcta solid" onclick="goTo('register')">Create free account</button>
+    </div>
   </div>
-  <div class="navtabs">
-    <div class="navtab active" data-page="home">Home</div>
-    <div class="navtab" data-page="catalog">API catalog</div>
-    <div class="navtab" data-page="explorer">Explorer &amp; sandbox</div>
-    <div class="navtab" data-page="dashboard">Dashboard</div>
-  </div>
-  <button class="navcta">Get API keys</button>
 </div>
 
 <!-- ============ HOME ============ -->
@@ -287,240 +250,415 @@
     <div>
       <div class="eyebrow">Open API platform</div>
       <h1>Build on ABHI's rails, not around them.</h1>
-      <p class="lede">One catalog for onboarding, wallets, bill payments, mobile load, transfers, cards, and acquiring. Test in a live sandbox in minutes, then go live without waiting on a bespoke integration.</p>
+      <p class="lede">One catalog for onboarding, wallets, bill payments, mobile load, transfers, cards, and acquiring. Register free, test live in a sandbox in minutes, then go live without waiting on a bespoke integration.</p>
       <div class="hero-cta">
-        <button class="btn-primary">Get API keys</button>
-        <button class="btn-secondary">View documentation</button>
+        <button class="btn-primary" onclick="goTo('register')">Create free account</button>
+        <button class="btn-secondary" onclick="goTo('catalog')">Browse the API catalog</button>
       </div>
     </div>
     <div class="console">
       <div class="console-head">
-        <div class="dot" style="background:#E8695C"></div>
-        <div class="dot" style="background:#E8C275"></div>
-        <div class="dot" style="background:#6FD9B8"></div>
+        <div class="dot" style="background:#E8695C"></div><div class="dot" style="background:#E8C275"></div><div class="dot" style="background:#6FD9B8"></div>
         <div class="label">sandbox.abhinexus.pk</div>
       </div>
       <div class="console-body" id="heroConsole"></div>
     </div>
   </div>
 
-  <div class="section-label">Api catalog</div>
-  <div class="cat-grid">
-    <div class="cat-card" onclick="goTo('explorer')"><div class="n">01</div><h3>Onboarding &amp; identity</h3><p>NADRA-backed verification, liveliness, and BVS fallback.</p></div>
-    <div class="cat-card" onclick="goTo('explorer')"><div class="n">02</div><h3>Accounts &amp; wallet</h3><p>Balance inquiry, mini-statements, tier lookup.</p></div>
-    <div class="cat-card" onclick="goTo('explorer')"><div class="n">03</div><h3>Bill payments</h3><p>1-Link/1BILL and Kuickpay with automatic failover.</p></div>
-    <div class="cat-card" onclick="goTo('explorer')"><div class="n">04</div><h3>Mobile load &amp; bundles</h3><p>Jazz direct plus Ufone, Telenor, and Zong via 1-Link.</p></div>
-    <div class="cat-card" onclick="goTo('explorer')"><div class="n">05</div><h3>Transfers</h3><p>P2P payments over Raast.</p></div>
-    <div class="cat-card" onclick="goTo('explorer')"><div class="n">06</div><h3>Cards &amp; issuance</h3><p>PayPak and sponsored-BIN issuance, controls, limits.</p></div>
-    <div class="cat-card" onclick="goTo('explorer')"><div class="n">07</div><h3>QR &amp; acquiring</h3><p>Merchant QR generation and transaction status.</p></div>
-    <div class="cat-card" style="background:var(--navy); border-color:var(--navy);" onclick="goTo('catalog')">
-      <div class="n" style="color:#8FA0B3;">08</div>
-      <h3 style="color:#fff;">See all endpoints →</h3>
-      <p style="color:#CBD6E2;">Browse the full catalog with docs and code samples.</p>
+  <div class="twopanel">
+    <div class="info-card">
+      <h3>Easy onboarding</h3>
+      <p>Create a free account, get sandbox credentials instantly, and start testing the same day — no waiting on a manual approval queue.</p>
+      <a class="link" onclick="goTo('start')">See how it works →</a>
+    </div>
+    <div class="info-card">
+      <h3>A complete API catalog</h3>
+      <p>Onboarding, accounts, bill payments, mobile load, transfers, cards, and acquiring — one catalog instead of separate integrations per rail.</p>
+      <a class="link" onclick="goTo('catalog')">Explore the catalog →</a>
     </div>
   </div>
 
-  <div class="section-label" style="margin-top:70px;">How it works</div>
-  <div class="steps">
-    <div class="step"><div class="num">1</div><h3>Sandbox</h3><p>Create an account and get a client ID and secret instantly. No approval wait.</p></div>
-    <div class="step"><div class="num">2</div><h3>Integrate</h3><p>Test against synthetic data in the live explorer, with sample code in four languages.</p></div>
-    <div class="step"><div class="num">3</div><h3>Go live</h3><p>Sign your agreement while you build. Production keys unlock the moment it's signed.</p></div>
+  <div class="section-label" style="margin-top:60px;">Rails available through the catalog</div>
+  <div class="rails-strip">
+    <span class="rail-badge">1-Link / 1BILL</span>
+    <span class="rail-badge">Kuickpay</span>
+    <span class="rail-badge">Raast</span>
+    <span class="rail-badge">NADRA</span>
+    <span class="rail-badge">PayPak</span>
+    <span class="rail-badge">Sponsored BIN</span>
+  </div>
+
+  <div class="cta-band">
+    <div><h3>Still have questions?</h3><p>Our team is here to help you get integrated.</p></div>
+    <button class="navcta solid" onclick="goTo('help')" style="border-color:var(--teal);">Contact us</button>
   </div>
 
   <footer>ABHI Nexus — Open API Portal · Status page · Support · Change log · Terms</footer>
 </div>
 
-<!-- ============ CATALOG ============ -->
-<div class="page" id="page-catalog">
-  <div class="catalog-head">
-    <div>
-      <h2>API catalog</h2>
-      <p>Every endpoint ABHI Nexus exposes, grouped by category.</p>
+<!-- ============ GETTING STARTED ============ -->
+<div class="page" id="page-start">
+  <div class="eyebrow">Getting started</div>
+  <h1 style="font-size:32px; color:var(--navy); margin:0 0 8px;">Start building today</h1>
+  <p style="font-size:14px; color:var(--slate); max-width:600px; margin:0 0 10px;">Five steps take you from browsing the catalog to a live production integration. Steps 2 and 4 run in parallel, so contracting never blocks your build.</p>
+
+  <div class="steptrack">
+    <div class="steprow"><div class="stepline"></div>
+      <div class="stepnum">1</div>
+      <div class="stepcontent">
+        <h3>Browse and pick your APIs</h3>
+        <p>Explore the catalog across onboarding, accounts, payments, mobile load, transfers, cards, and acquiring, and identify what your use case needs.</p>
+        <span class="step-cta" onclick="goTo('catalog')">Browse the API catalog →</span>
+      </div>
     </div>
-    <input class="search-bar" placeholder="Search endpoints, e.g. bill payment">
+    <div class="steprow"><div class="stepline"></div>
+      <div class="stepnum">2</div>
+      <div class="stepcontent">
+        <h3>Create your free account<span class="parallel-badge">instant</span></h3>
+        <p>Self-registration takes a couple of minutes. You get a Client ID and Client Secret immediately — no manual approval wait to start testing.</p>
+        <span class="step-cta" onclick="goTo('register')">Create a free account →</span>
+      </div>
+    </div>
+    <div class="steprow"><div class="stepline"></div>
+      <div class="stepnum">3</div>
+      <div class="stepcontent">
+        <h3>Build and test in the sandbox</h3>
+        <p>Every API ships with full documentation, request and response schemas, sample code in six languages, and a live "try it" console against synthetic test data.</p>
+        <span class="step-cta" onclick="goTo('console')">Open the sandbox console →</span>
+      </div>
+    </div>
+    <div class="steprow"><div class="stepline"></div>
+      <div class="stepnum">4</div>
+      <div class="stepcontent">
+        <h3>Run business onboarding<span class="parallel-badge">runs in parallel</span></h3>
+        <p>While you build, our business team runs the commercial and compliance track alongside you:</p>
+        <ul>
+          <li>Partner onboarding and use-case review</li>
+          <li>Contract signing and commercial agreement</li>
+          <li>Operational process and security review</li>
+        </ul>
+      </div>
+    </div>
+    <div class="steprow">
+      <div class="stepnum">5</div>
+      <div class="stepcontent">
+        <h3>Go live in production</h3>
+        <p>Once your agreement is signed and sandbox testing is complete, request production access from the console. A production Client ID and Client Secret are issued per app — the secret is shown once, so store it securely.</p>
+        <span class="step-cta" onclick="goTo('console')">Go to console →</span>
+      </div>
+    </div>
   </div>
+</div>
+
+<!-- ============ API CATALOG ============ -->
+<div class="page" id="page-catalog">
+  <div class="eyebrow">API catalog</div>
+  <h1 style="font-size:30px; color:var(--navy); margin:0 0 12px;">Our API products</h1>
+  <p class="catalog-intro">Discover the full range of API solutions across four groups. Every endpoint includes complete documentation and a live sandbox console — click any endpoint to view full docs and try it yourself.</p>
+
+  <div class="cat-tabs" id="catTabs"></div>
+  <p class="catalog-intro" id="catDesc" style="margin-bottom:16px;"></p>
   <div class="catalog-list" id="catalogList"></div>
 </div>
 
-<!-- ============ EXPLORER ============ -->
-<div class="page" id="page-explorer">
-  <div class="catalog-head">
-    <div>
-      <h2>Explorer &amp; sandbox</h2>
-      <p>Pick an endpoint, edit the request, and run it against sandbox test data.</p>
+<!-- ============ CONSOLE ============ -->
+<div class="page" id="page-console">
+  <div class="eyebrow">Console</div>
+  <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;">
+    <h1 style="font-size:30px; color:var(--navy); margin:0;">Developer console</h1>
+    <div class="session-pill"><span class="dotgreen"></span>Sandbox session · Acme Fintech Ltd.</div>
+  </div>
+  <div class="subnav">
+    <div class="subtab active" data-sub="explorer" onclick="goSub('explorer')">Explorer &amp; sandbox</div>
+    <div class="subtab" data-sub="dashboard" onclick="goSub('dashboard')">Dashboard</div>
+  </div>
+
+  <div id="sub-explorer">
+    <div class="explorer">
+      <div class="exp-nav" id="expNav"></div>
+      <div class="exp-doc" id="expDoc"></div>
     </div>
   </div>
-  <div class="explorer">
-    <div class="exp-col exp-nav" id="expNav"></div>
-    <div class="exp-col exp-main">
-      <h3 class="path" id="expPath"></h3>
-      <p class="desc" id="expDesc"></p>
-      <div class="exp-field-label">Request body</div>
-      <textarea id="reqbody"></textarea>
-      <div class="run-row">
-        <button class="btn-run" onclick="runRequest()">Run request</button>
-        <span class="run-hint">Sandbox · synthetic test data</span>
+
+  <div id="sub-dashboard" style="display:none;">
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="lab">API calls (30d)</div><div class="val">1.24M</div><div class="delta">↑ 8.2% vs prior month</div></div>
+      <div class="kpi-card"><div class="lab">Success rate</div><div class="val">98.6%</div><div class="delta">↑ 0.3 pts</div></div>
+      <div class="kpi-card"><div class="lab">Avg latency</div><div class="val">212ms</div><div class="delta" style="color:var(--slate);">stable</div></div>
+      <div class="kpi-card"><div class="lab">Active apps</div><div class="val">3</div><div class="delta" style="color:var(--slate);">1 in sandbox</div></div>
+    </div>
+    <div class="dash-grid">
+      <div class="panel">
+        <h3>Call volume by API — last 7 days</h3>
+        <div class="bars" id="barsChart"></div>
+      </div>
+      <div class="panel">
+        <h3>Error breakdown</h3>
+        <div class="donut">
+          <svg width="120" height="120" viewBox="0 0 36 36">
+            <circle cx="18" cy="18" r="15.9" fill="none" stroke="#EEF1F3" stroke-width="4"></circle>
+            <circle cx="18" cy="18" r="15.9" fill="none" stroke="#0F6E56" stroke-width="4" stroke-dasharray="60 40" stroke-dashoffset="25"></circle>
+            <circle cx="18" cy="18" r="15.9" fill="none" stroke="#B08D2A" stroke-width="4" stroke-dasharray="25 75" stroke-dashoffset="-35"></circle>
+            <circle cx="18" cy="18" r="15.9" fill="none" stroke="#B3261E" stroke-width="4" stroke-dasharray="15 85" stroke-dashoffset="-60"></circle>
+          </svg>
+          <div>
+            <div class="legend-item"><span class="sw" style="background:#0F6E56"></span>Timeout (60%)</div>
+            <div class="legend-item"><span class="sw" style="background:#B08D2A"></span>Invalid payload (25%)</div>
+            <div class="legend-item"><span class="sw" style="background:#B3261E"></span>Auth error (15%)</div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="exp-col exp-resp">
-      <div class="resp-status pending" id="respStatus">Awaiting request</div>
-      <pre id="respbody">// Click "Run request" to see a live sandbox response.</pre>
-      <div class="code-tabs">
-        <div class="code-tab on">cURL</div>
-        <div class="code-tab">Node</div>
-        <div class="code-tab">Java</div>
-        <div class="code-tab">PHP</div>
-      </div>
+    <div class="panel">
+      <h3>Apps &amp; API keys</h3>
+      <table class="apps">
+        <tr><th>App name</th><th>Environment</th><th>Scopes</th><th>Status</th><th>Created</th><th></th></tr>
+        <tr><td>Bill pay integration</td><td>Production</td><td class="mono">bill-payments:*</td><td><span class="status-pill active">Active</span></td><td>12 Mar 2027</td><td><span class="manage-link">Manage</span></td></tr>
+        <tr><td>Load &amp; bundles app</td><td>Sandbox</td><td class="mono">mobile-load:*</td><td><span class="status-pill sandbox">Sandbox</span></td><td>02 Apr 2027</td><td><span class="manage-link">Manage</span></td></tr>
+        <tr><td>Onboarding POC</td><td>Sandbox</td><td class="mono">onboarding:kyc</td><td><span class="status-pill revoked">Revoked</span></td><td>20 Jan 2027</td><td><span class="manage-link">Manage</span></td></tr>
+      </table>
     </div>
   </div>
 </div>
 
-<!-- ============ DASHBOARD ============ -->
-<div class="page" id="page-dashboard">
-  <div class="catalog-head">
-    <div>
-      <h2>Dashboard</h2>
-      <p>Acme Fintech Ltd. · Verified partner</p>
+<!-- ============ REGISTER ============ -->
+<div class="page page-narrow" id="page-register">
+  <div class="form-card">
+    <h2>Create your free account</h2>
+    <p class="sub">Takes about two minutes. You'll get sandbox credentials the moment you submit — no manual approval wait.</p>
+    <div class="form-grid">
+      <div class="field"><label>First name <span class="req">*</span></label><input type="text" placeholder="Ayesha"></div>
+      <div class="field"><label>Last name <span class="req">*</span></label><input type="text" placeholder="Khan"></div>
+      <div class="field full"><label>Work email <span class="req">*</span></label><input type="email" placeholder="ayesha@yourcompany.com"></div>
+      <div class="field full"><label>Organization name <span class="req">*</span></label><input type="text" placeholder="Acme Fintech Ltd."></div>
+      <div class="field"><label>Contact number <span class="req">*</span></label><input type="tel" placeholder="+92 300 1234567"></div>
+      <div class="field"><label>Organization website <span class="opt">(optional)</span></label><input type="text" placeholder="https://yourcompany.com"></div>
+      <div class="field full"><label>NTN certificate <span class="opt">(optional)</span></label><div class="upload-field">Drag a file here or click to upload · PDF, up to 5MB</div></div>
+      <div class="field full"><label>Business profile <span class="req">*</span></label><div class="upload-field">Drag a file here or click to upload · PDF, up to 5MB</div></div>
+    </div>
+    <div class="check-row"><input type="checkbox" id="notrobot"><label for="notrobot">I'm not a robot</label></div>
+    <button class="btn-primary" style="width:100%;" onclick="submitRegister()">Create account</button>
+    <p class="progress-hint">By creating an account you agree to the Developer Terms and Sandbox Data Policy.</p>
+    <div class="form-foot">
+      <span></span>
+      <span class="form-link" onclick="goTo('login')">Already have an account? Log in</span>
     </div>
   </div>
+</div>
 
-  <div class="kpi-grid">
-    <div class="kpi-card"><div class="lab">API calls (30d)</div><div class="val">1.24M</div><div class="delta">↑ 8.2% vs prior month</div></div>
-    <div class="kpi-card"><div class="lab">Success rate</div><div class="val">98.6%</div><div class="delta">↑ 0.3 pts</div></div>
-    <div class="kpi-card"><div class="lab">Avg latency</div><div class="val">212ms</div><div class="delta" style="color:var(--slate);">stable</div></div>
-    <div class="kpi-card"><div class="lab">Active apps</div><div class="val">3</div><div class="delta" style="color:var(--slate);">1 in sandbox</div></div>
-  </div>
-
-  <div class="dash-grid">
-    <div class="panel">
-      <h3>Call volume by API — last 7 days</h3>
-      <div class="bars" id="barsChart"></div>
-    </div>
-    <div class="panel">
-      <h3>Error breakdown</h3>
-      <div class="donut">
-        <svg width="120" height="120" viewBox="0 0 36 36">
-          <circle cx="18" cy="18" r="15.9" fill="none" stroke="#EEF1F3" stroke-width="4"></circle>
-          <circle cx="18" cy="18" r="15.9" fill="none" stroke="#0F6E56" stroke-width="4" stroke-dasharray="60 40" stroke-dashoffset="25"></circle>
-          <circle cx="18" cy="18" r="15.9" fill="none" stroke="#B08D2A" stroke-width="4" stroke-dasharray="25 75" stroke-dashoffset="-35"></circle>
-          <circle cx="18" cy="18" r="15.9" fill="none" stroke="#B3261E" stroke-width="4" stroke-dasharray="15 85" stroke-dashoffset="-60"></circle>
-        </svg>
-        <div>
-          <div class="legend-item"><span class="sw" style="background:#0F6E56"></span>Timeout (60%)</div>
-          <div class="legend-item"><span class="sw" style="background:#B08D2A"></span>Invalid payload (25%)</div>
-          <div class="legend-item"><span class="sw" style="background:#B3261E"></span>Auth error (15%)</div>
-        </div>
-      </div>
+<!-- ============ LOGIN ============ -->
+<div class="page page-narrow" id="page-login">
+  <div class="form-card">
+    <h2>Log in</h2>
+    <p class="sub">Access your sandbox and production apps.</p>
+    <div class="field full"><label>Email</label><input type="email" placeholder="you@yourcompany.com"></div>
+    <div class="field full"><label>Password</label><input type="password" placeholder="••••••••••"></div>
+    <button class="btn-primary" style="width:100%; margin-top:6px;" onclick="goTo('console')">Log in</button>
+    <div class="form-foot">
+      <span class="form-link" onclick="alert('A reset link would be sent to your email.')">Forgot password?</span>
+      <span class="form-link" onclick="goTo('register')">New here? Create a free account</span>
     </div>
   </div>
+</div>
 
-  <div class="panel">
-    <h3>Apps &amp; API keys</h3>
-    <table class="apps">
-      <tr><th>App name</th><th>Environment</th><th>Scopes</th><th>Status</th><th>Created</th><th></th></tr>
-      <tr><td>Bill pay integration</td><td>Production</td><td class="mono">bill-payments:*</td><td><span class="status-pill active">Active</span></td><td>12 Mar 2027</td><td><span class="manage-link">Manage</span></td></tr>
-      <tr><td>Load &amp; bundles app</td><td>Sandbox</td><td class="mono">mobile-load:*</td><td><span class="status-pill sandbox">Sandbox</span></td><td>02 Apr 2027</td><td><span class="manage-link">Manage</span></td></tr>
-      <tr><td>Onboarding POC</td><td>Sandbox</td><td class="mono">onboarding:kyc</td><td><span class="status-pill revoked">Revoked</span></td><td>20 Jan 2027</td><td><span class="manage-link">Manage</span></td></tr>
-    </table>
+<!-- ============ HELP CENTER ============ -->
+<div class="page" id="page-help">
+  <div class="eyebrow">Help center</div>
+  <h1 style="font-size:30px; color:var(--navy); margin:0 0 8px;">Frequently asked questions</h1>
+  <p style="font-size:13.5px; color:var(--slate); max-width:600px; margin:0 0 24px;">Browse common questions, or reach out directly if you can't find what you need.</p>
+  <div id="faqList"></div>
+  <div class="contact-band">
+    <div><h3>Still stuck?</h3><p>Our developer support team responds within one business day.</p></div>
+    <button class="navcta solid" style="border-color:var(--teal);" onclick="alert('This would open a support ticket form.')">Contact support</button>
   </div>
 </div>
 
 <script>
+const ERROR_CODES = [
+  {code:"4001", msg:"Bad request — invalid access token"},
+  {code:"4002", msg:"Bad request — invalid request payload"},
+  {code:"4003", msg:"Bad request — invalid authorization header"},
+  {code:"4004", msg:"Something went wrong"},
+  {code:"4005", msg:"Record not found"},
+  {code:"4006", msg:"Invalid client ID / secret"},
+  {code:"4429", msg:"Too many requests — rate limit exceeded"}
+];
+const HEADERS_POST = [
+  ["Accept","JSON","application/json","Response format"],
+  ["Content-Type","JSON","application/json","Request format"],
+  ["clientId","String","sbx_••••7f21","Issued when you create your app"],
+  ["clientSecret","String","Bearer token","OAuth2 access token"],
+  ["organizationId","String","org_2231","Identifies your organization"],
+  ["Idempotency-Key","String","uuid v4","Prevents duplicate processing on retry"]
+];
+const HEADERS_GET = HEADERS_POST.slice(0,5);
+
 const endpoints = [
   {id:"onboarding-verify", cat:"Onboarding & identity", method:"POST", path:"/v1/onboarding/verify-identity",
    desc:"Verify a new customer against NADRA records with liveliness and selfie match, falling back to BVS if NADRA is unavailable.",
+   prereqs:["A valid client ID and secret","A verified sandbox account","A CNIC in the NADRA sandbox test range"],
+   params:[["Cnic","National identity number","Mandatory","STRING","13","3520112345671"],
+           ["SelfieRef","Reference to the uploaded selfie image","Mandatory","STRING","20","sbx_selfie_88213"],
+           ["ProductTier","Requested account tier","Mandatory","STRING","20","asaan_digital"]],
    body:'{\n  "cnic": "3520112345671",\n  "selfie_ref": "sbx_selfie_88213",\n  "product_tier": "asaan_digital"\n}',
+   respParams:[["VerificationId","Unique verification reference","STRING","12","ver_9f2c1a"],
+               ["Status","Verification outcome","STRING","10","verified"],
+               ["Method","Verification method used","STRING","20","nadra_liveliness"],
+               ["BvsFallbackUsed","Whether BVS fallback triggered","BOOLEAN","5","false"],
+               ["MatchedScore","Liveliness/selfie match confidence","DECIMAL","4","0.97"]],
    resp:'{\n  "verification_id": "ver_9f2c1a",\n  "status": "verified",\n  "method": "nadra_liveliness",\n  "bvs_fallback_used": false,\n  "matched_score": 0.97\n}'},
+
   {id:"account-balance", cat:"Accounts & wallet", method:"GET", path:"/v1/accounts/{id}/balance",
    desc:"Retrieve the current balance and account tier for a wallet.",
+   prereqs:["A valid client ID and secret","A valid account_id"],
+   params:[["AccountId","Wallet account identifier","Mandatory","STRING","10","acc_44210"]],
    body:'{\n  "account_id": "acc_44210"\n}',
+   respParams:[["AccountId","Wallet account identifier","STRING","10","acc_44210"],
+               ["Tier","Account tier","STRING","20","abhi_digital"],
+               ["Balance","Current balance","STRING","10","18450.00"],
+               ["Currency","Currency code","STRING","3","PKR"]],
    resp:'{\n  "account_id": "acc_44210",\n  "tier": "abhi_digital",\n  "balance": "18450.00",\n  "currency": "PKR"\n}'},
+
   {id:"bill-pay", cat:"Bill payments", method:"POST", path:"/v1/bill-payments/pay",
    desc:"Pay a biller. ABHI Nexus automatically fails over between 1-Link/1BILL and Kuickpay so you never implement rail-selection logic.",
+   prereqs:["A valid client ID and secret","A valid consumer number","A due-date check on the bill","A valid amount"],
+   params:[["ConsumerNumber","Biller consumer/reference number","Mandatory","STRING","11","0300XXXXXXX"],
+           ["BillerId","Registered biller identifier","Mandatory","STRING","15","kelectric_001"],
+           ["Amount","Payment amount in PKR","Mandatory","STRING","8","3450.00"]],
    body:'{\n  "consumer_number": "0300XXXXXXX",\n  "biller_id": "kelectric_001",\n  "amount": "3450.00"\n}',
+   respParams:[["TransactionId","Unique transaction reference","STRING","12","txn_77a12c"],
+               ["Status","Transaction outcome","STRING","10","success"],
+               ["RailUsed","Rail that processed the payment","STRING","15","1link_1bill"],
+               ["Amount","Amount processed","STRING","8","3450.00"],
+               ["Fee","Fee charged","STRING","6","0.00"]],
    resp:'{\n  "transaction_id": "txn_77a12c",\n  "status": "success",\n  "rail_used": "1link_1bill",\n  "amount": "3450.00",\n  "fee": "0.00"\n}'},
+
   {id:"mobile-load", cat:"Mobile load & bundles", method:"POST", path:"/v1/mobile-load/topup",
-   desc:"Top up a prepaid mobile balance or purchase a bundle, with a pre-review check for blocking Jazz Advance loans.",
+   desc:"Top up a prepaid mobile balance or purchase a bundle, with a pre-review check for blocking loan holds.",
+   prereqs:["A valid client ID and secret","A valid MSISDN","Network must be jazz, ufone, telenor, or zong"],
+   params:[["Msisdn","Mobile number","Mandatory","STRING","11","0300XXXXXXX"],
+           ["Network","Mobile network operator","Mandatory","STRING","10","jazz"],
+           ["Amount","Top-up amount in PKR","Mandatory","STRING","6","500.00"]],
    body:'{\n  "msisdn": "0300XXXXXXX",\n  "network": "jazz",\n  "amount": "500.00"\n}',
+   respParams:[["TransactionId","Unique transaction reference","STRING","12","txn_10ff2e"],
+               ["Status","Transaction outcome","STRING","10","success"],
+               ["LoanBlockDetected","Whether a loan hold blocked the top-up","BOOLEAN","5","false"],
+               ["Network","Mobile network operator","STRING","10","jazz"]],
    resp:'{\n  "transaction_id": "txn_10ff2e",\n  "status": "success",\n  "loan_block_detected": false,\n  "network": "jazz"\n}'},
+
   {id:"transfer", cat:"Transfers", method:"POST", path:"/v1/transfers/raast",
    desc:"Send a P2P transfer over Raast using an IBAN or a registered mobile number.",
+   prereqs:["A valid client ID and secret","A valid destination IBAN or alias","Sufficient wallet balance"],
+   params:[["ToIban","Destination IBAN","Mandatory","STRING","24","PK36ABHI0000001234567890"],
+           ["Amount","Transfer amount in PKR","Mandatory","STRING","8","2000.00"],
+           ["Narration","Payment reference note","Optional","STRING","30","Rent"]],
    body:'{\n  "to_iban": "PK36ABHI0000001234567890",\n  "amount": "2000.00",\n  "narration": "Rent"\n}',
+   respParams:[["TransactionId","Unique transaction reference","STRING","12","txn_5b8a90"],
+               ["Status","Transaction outcome","STRING","10","success"],
+               ["Rail","Rail used","STRING","6","raast"],
+               ["Settlement","Settlement timing","STRING","10","instant"]],
    resp:'{\n  "transaction_id": "txn_5b8a90",\n  "status": "success",\n  "rail": "raast",\n  "settlement": "instant"\n}'},
+
   {id:"card-issue", cat:"Cards & issuance", method:"POST", path:"/v1/cards/issue",
    desc:"Issue a PayPak or sponsored-BIN debit card for a verified customer.",
+   prereqs:["A valid client ID and secret","A verified customer account","A saved delivery address"],
+   params:[["AccountId","Wallet account identifier","Mandatory","STRING","10","acc_44210"],
+           ["Scheme","Card scheme","Mandatory","STRING","10","paypak"],
+           ["DeliveryAddressId","Saved delivery address reference","Mandatory","STRING","10","addr_1120"]],
    body:'{\n  "account_id": "acc_44210",\n  "scheme": "paypak",\n  "delivery_address_id": "addr_1120"\n}',
+   respParams:[["CardId","Unique card reference","STRING","12","card_a13f02"],
+               ["Status","Issuance status","STRING","10","issued"],
+               ["Scheme","Card scheme","STRING","10","paypak"],
+               ["EtaDays","Estimated delivery in days","INTEGER","2","5"]],
    resp:'{\n  "card_id": "card_a13f02",\n  "status": "issued",\n  "scheme": "paypak",\n  "eta_days": 5\n}'},
+
   {id:"qr-generate", cat:"QR & acquiring", method:"POST", path:"/v1/qr/generate",
    desc:"Generate a merchant QR code for in-store acceptance.",
+   prereqs:["A valid client ID and secret","A registered merchant ID"],
+   params:[["MerchantId","Registered merchant identifier","Mandatory","STRING","10","mer_2201"],
+           ["Amount","QR amount in PKR","Mandatory","STRING","8","1200.00"]],
    body:'{\n  "merchant_id": "mer_2201",\n  "amount": "1200.00"\n}',
+   respParams:[["QrId","Unique QR reference","STRING","10","qr_c920a1"],
+               ["Status","QR status","STRING","10","active"],
+               ["ExpiresIn","Expiry window in seconds","INTEGER","4","300"]],
    resp:'{\n  "qr_id": "qr_c920a1",\n  "status": "active",\n  "expires_in": 300\n}'}
 ];
 
 function methodClass(m){ return m === "GET" ? "get" : "post"; }
+function table(headers, rows){
+  return '<table class="doc-table"><tr>' + headers.map(h=>'<th>'+h+'</th>').join('') + '</tr>' +
+    rows.map(r=>'<tr>'+r.map((c,i)=>'<td class="'+(i===0?'mono-cell':'')+'">'+c+'</td>').join('')+'</tr>').join('') + '</table>';
+}
+function codeSample(lang, e){
+  if(lang==="curl") return 'curl -X ' + e.method + ' https://sandbox.abhinexus.pk' + e.path + ' \\\n  -H "clientId: sbx_••••7f21" \\\n  -H "clientSecret: Bearer sbx_token" \\\n  -H "Content-Type: application/json"' + (e.method==="POST" ? " \\\n  -d '" + e.body.replace(/\n\s*/g,' ') + "'" : "");
+  if(lang==="node") return "const res = await fetch('https://sandbox.abhinexus.pk" + e.path + "', {\n  method: '" + e.method + "',\n  headers: { clientId: 'sbx_••••7f21', clientSecret: 'Bearer sbx_token', 'Content-Type': 'application/json' }" + (e.method==="POST" ? ",\n  body: JSON.stringify(" + e.body.replace(/\n\s*/g,' ') + ")" : "") + "\n});";
+  if(lang==="php") return "$ch = curl_init('https://sandbox.abhinexus.pk" + e.path + "');\ncurl_setopt($ch, CURLOPT_CUSTOMREQUEST, '" + e.method + "');\ncurl_setopt($ch, CURLOPT_HTTPHEADER, ['clientId: sbx_••••7f21', 'clientSecret: Bearer sbx_token']);\n$response = curl_exec($ch);";
+  if(lang==="java") return "HttpRequest request = HttpRequest.newBuilder()\n  .uri(URI.create(\"https://sandbox.abhinexus.pk" + e.path + "\"))\n  .header(\"clientId\", \"sbx_••••7f21\")\n  .header(\"clientSecret\", \"Bearer sbx_token\")\n  ." + (e.method==="GET" ? "GET()" : "POST(BodyPublishers.ofString(requestBody))") + "\n  .build();";
+  return "// sample not available for this language yet";
+}
 
-// ---- nav ----
-document.querySelectorAll(".navtab").forEach(t => {
-  t.addEventListener("click", () => goTo(t.dataset.page));
-});
+document.querySelectorAll(".navtab").forEach(t => t.addEventListener("click", () => goTo(t.dataset.page)));
 function goTo(page){
   document.querySelectorAll(".navtab").forEach(t => t.classList.toggle("active", t.dataset.page === page));
   document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
   document.getElementById("page-" + page).classList.add("active");
+  window.scrollTo(0,0);
+}
+function goSub(sub){
+  document.querySelectorAll(".subtab").forEach(t => t.classList.toggle("active", t.dataset.sub === sub));
+  document.getElementById("sub-explorer").style.display = sub === "explorer" ? "block" : "none";
+  document.getElementById("sub-dashboard").style.display = sub === "dashboard" ? "block" : "none";
+}
+function submitRegister(){
+  goTo("console");
 }
 
-// ---- hero rotating console ----
 const heroSamples = [
-  {tag:"POST /v1/bill-payments/pay", lines:[
-    ["m","curl -X POST https://api.abhinexus.pk/v1/bill-payments/pay \\"],
-    ["s","  -H \"Authorization: Bearer sbx_••••7f21\" \\"],
-    ["s","  -d '{\"biller_id\":\"kelectric_001\",\"amount\":\"3450.00\"}'"],
-    ["k","→ 200 OK  rail_used: 1link_1bill  status: success"]
-  ]},
-  {tag:"POST /v1/mobile-load/topup", lines:[
-    ["m","curl -X POST https://api.abhinexus.pk/v1/mobile-load/topup \\"],
-    ["s","  -H \"Authorization: Bearer sbx_••••7f21\" \\"],
-    ["s","  -d '{\"msisdn\":\"0300XXXXXXX\",\"network\":\"jazz\",\"amount\":\"500\"}'"],
-    ["k","→ 200 OK  loan_block_detected: false  status: success"]
-  ]},
-  {tag:"POST /v1/onboarding/verify-identity", lines:[
-    ["m","curl -X POST https://api.abhinexus.pk/v1/onboarding/verify-identity \\"],
-    ["s","  -H \"Authorization: Bearer sbx_••••7f21\" \\"],
-    ["s","  -d '{\"cnic\":\"3520112345671\"}'"],
-    ["k","→ 200 OK  method: nadra_liveliness  matched_score: 0.97"]
-  ]}
+  {tag:"POST /v1/bill-payments/pay", lines:[["m","curl -X POST https://sandbox.abhinexus.pk/v1/bill-payments/pay \\\\"],["s","  -H \"clientId: sbx_••••7f21\" \\\\"],["s","  -d '{\"biller_id\":\"kelectric_001\",\"amount\":\"3450.00\"}'"],["k","→ 200 OK  rail_used: 1link_1bill  status: success"]]},
+  {tag:"POST /v1/mobile-load/topup", lines:[["m","curl -X POST https://sandbox.abhinexus.pk/v1/mobile-load/topup \\\\"],["s","  -H \"clientId: sbx_••••7f21\" \\\\"],["s","  -d '{\"msisdn\":\"0300XXXXXXX\",\"network\":\"jazz\",\"amount\":\"500\"}'"],["k","→ 200 OK  loan_block_detected: false  status: success"]]},
+  {tag:"POST /v1/onboarding/verify-identity", lines:[["m","curl -X POST https://sandbox.abhinexus.pk/v1/onboarding/verify-identity \\\\"],["s","  -H \"clientId: sbx_••••7f21\" \\\\"],["s","  -d '{\"cnic\":\"3520112345671\"}'"],["k","→ 200 OK  method: nadra_liveliness  matched_score: 0.97"]]}
 ];
 let heroIdx = 0;
 function renderHero(){
   const s = heroSamples[heroIdx];
-  const el = document.getElementById("heroConsole");
-  el.innerHTML = '<div class="console-tag">' + s.tag + '</div>' +
-    s.lines.map(l => '<div class="console-line ' + l[0] + '">' + l[1] + '</div>').join("");
+  document.getElementById("heroConsole").innerHTML = '<div class="console-tag">' + s.tag + '</div>' + s.lines.map(l => '<div class="console-line ' + l[0] + '">' + l[1] + '</div>').join("");
   heroIdx = (heroIdx + 1) % heroSamples.length;
 }
-renderHero();
-setInterval(renderHero, 3200);
+renderHero(); setInterval(renderHero, 3200);
 
-// ---- catalog page ----
-const catalogList = document.getElementById("catalogList");
-catalogList.innerHTML = endpoints.map(e => (
-  '<div class="catalog-row">' +
-    '<span class="method ' + methodClass(e.method) + '">' + e.method + '</span>' +
-    '<div><div class="path">' + e.path + '</div><div class="desc">' + e.desc + '</div></div>' +
-    '<span class="cat-tag">' + e.cat + '</span>' +
-    '<span class="try-link" onclick="openInExplorer(\'' + e.id + '\')">Try it →</span>' +
-  '</div>'
-)).join("");
-
-function openInExplorer(id){
-  goTo("explorer");
-  selectEndpoint(id);
-}
-
-// ---- explorer page ----
 const cats = [...new Set(endpoints.map(e => e.cat))];
-const expNav = document.getElementById("expNav");
-expNav.innerHTML = cats.map(c => (
+const catDescs = {
+  "Onboarding & identity":"Optimize customer acquisition with a streamlined onboarding flow, backed by NADRA verification, while maintaining strict regulatory compliance and fraud prevention.",
+  "Accounts & wallet":"Centralize balance and account inquiries so partners can build support and reconciliation flows without extra round-trips.",
+  "Bill payments":"Secure and efficient bill payments with automatic rail failover across 1-Link/1BILL and Kuickpay.",
+  "Mobile load & bundles":"Top up prepaid balances and bundles across all major networks, with built-in loan-hold checks.",
+  "Transfers":"Instant P2P payments settled over Raast.",
+  "Cards & issuance":"Issue and manage PayPak and sponsored-BIN cards, including controls and limits.",
+  "QR & acquiring":"Merchant QR generation and transaction status for in-store acceptance."
+};
+let activeCat = cats[2];
+const catTabsEl = document.getElementById("catTabs");
+catTabsEl.innerHTML = cats.map(c => '<div class="cat-tab' + (c===activeCat?' active':'') + '" data-c="' + c + '">' + c + '</div>').join("");
+catTabsEl.querySelectorAll(".cat-tab").forEach(t => t.addEventListener("click", () => { activeCat = t.dataset.c; renderCatalog(); }));
+
+function renderCatalog(){
+  document.querySelectorAll(".cat-tab").forEach(t => t.classList.toggle("active", t.dataset.c === activeCat));
+  document.getElementById("catDesc").textContent = catDescs[activeCat];
+  const list = endpoints.filter(e => e.cat === activeCat);
+  document.getElementById("catalogList").innerHTML = list.map(e => (
+    '<div class="catalog-row">' +
+      '<span class="method ' + methodClass(e.method) + '">' + e.method + '</span>' +
+      '<div><div class="path">' + e.path + '</div><div class="desc">' + e.desc + '</div></div>' +
+      '<span class="try-link" onclick="openInExplorer(\'' + e.id + '\')">View docs &amp; try it →</span>' +
+    '</div>'
+  )).join("");
+}
+renderCatalog();
+
+function openInExplorer(id){ goTo("console"); goSub("explorer"); selectEndpoint(id); }
+
+const expNavEl = document.getElementById("expNav");
+expNavEl.innerHTML = cats.map(c => (
   '<div class="exp-cat">' + c + '</div>' +
   endpoints.filter(e => e.cat === c).map(e => (
     '<div class="exp-item" data-id="' + e.id + '" onclick="selectEndpoint(\'' + e.id + '\')">' +
@@ -530,16 +668,67 @@ expNav.innerHTML = cats.map(c => (
   )).join("")
 )).join("");
 
+let currentLang = "curl";
 function selectEndpoint(id){
   const e = endpoints.find(x => x.id === id);
-  document.querySelectorAll(".exp-item").forEach(i => i.classList.toggle("active", i.dataset.id === id));
-  document.getElementById("expPath").textContent = e.method + "  " + e.path;
-  document.getElementById("expDesc").textContent = e.desc;
-  document.getElementById("reqbody").value = e.body;
-  document.getElementById("respStatus").textContent = "Awaiting request";
-  document.getElementById("respStatus").className = "resp-status pending";
-  document.getElementById("respbody").textContent = "// Click \"Run request\" to see a live sandbox response.";
   window._current = e;
+  currentLang = "curl";
+  document.querySelectorAll(".exp-item").forEach(i => i.classList.toggle("active", i.dataset.id === id));
+
+  const headers = e.method === "GET" ? HEADERS_GET : HEADERS_POST;
+  const html =
+    '<h2 class="epath">' + e.method + '  ' + e.path + '</h2>' +
+    '<p class="edesc">' + e.desc + '</p>' +
+    '<ul class="prereq-list">' + e.prereqs.map(p => '<li>' + p + '</li>').join("") + '</ul>' +
+
+    '<div class="doc-h4">Endpoint</div>' +
+    '<div class="env-toggle"><span class="env-btn active" data-env="uat">UAT environment</span><span class="env-btn" data-env="prod">Production environment</span></div>' +
+    '<div class="endpoint-url" id="endpointUrl">https://sandbox.abhinexus.pk' + e.path + '</div>' +
+
+    '<div class="doc-h4">Header parameters</div>' +
+    table(["Name","Type","Sample value","Description"], headers) +
+
+    '<div class="doc-h4">Request parameters</div>' +
+    table(["Name","Description","Required","Type","Length","Sample value"], e.params) +
+
+    '<div class="doc-h4">Sample request</div>' +
+    '<div class="lang-tabs" id="langTabs">' + ["curl","node","php","java"].map(l => '<span class="lang-tab' + (l==="curl"?' active':'') + '" data-lang="' + l + '">' + l.toUpperCase() + '</span>').join("") + '</div>' +
+    '<div class="codeblock" id="sampleReqCode">' + codeSample("curl", e) + '</div>' +
+
+    '<div class="doc-h4">Response parameters</div>' +
+    table(["Name","Description","Type","Length","Sample value"], e.respParams) +
+
+    '<div class="doc-h4">Sample response</div>' +
+    '<div class="codeblock">' + e.resp + '</div>' +
+
+    '<div class="doc-h4">Response codes</div>' +
+    '<div class="err-row"><span class="err-code ok">200</span><span>Success — request processed as shown in the sample response above.</span></div>' +
+    ERROR_CODES.map(er => '<div class="err-row"><span class="err-code">' + er.code + '</span><span>' + er.msg + '</span></div>').join("") +
+
+    '<div class="tryit-panel">' +
+      '<div class="tryit-head"><h4>Try it yourself</h4><div class="auto-auth">Sandbox credentials auto-filled — no manual key entry</div></div>' +
+      '<div class="doc-h4" style="margin-top:0;">Request body</div>' +
+      '<textarea id="reqbody">' + e.body + '</textarea>' +
+      '<div class="run-row"><button class="btn-run" onclick="runRequest()">Call operation</button><span class="run-hint">Sandbox · synthetic test data</span></div>' +
+      '<div class="resp-console">' +
+        '<div class="resp-status pending" id="respStatus">Awaiting request</div>' +
+        '<pre id="respbody">// Click "Call operation" to see a live sandbox response.</pre>' +
+      '</div>' +
+    '</div>';
+
+  document.getElementById("expDoc").innerHTML = html;
+
+  document.querySelectorAll(".env-btn").forEach(b => b.addEventListener("click", () => {
+    document.querySelectorAll(".env-btn").forEach(x => x.classList.remove("active"));
+    b.classList.add("active");
+    document.getElementById("endpointUrl").textContent = (b.dataset.env === "uat" ? "https://sandbox.abhinexus.pk" : "https://api.abhinexus.pk") + e.path;
+  }));
+  document.querySelectorAll(".lang-tab").forEach(b => b.addEventListener("click", () => {
+    document.querySelectorAll(".lang-tab").forEach(x => x.classList.remove("active"));
+    b.classList.add("active");
+    currentLang = b.dataset.lang;
+    document.getElementById("sampleReqCode").textContent = codeSample(currentLang, e);
+  }));
 }
 selectEndpoint(endpoints[2].id);
 
@@ -547,24 +736,33 @@ function runRequest(){
   const e = window._current;
   const statusEl = document.getElementById("respStatus");
   const bodyEl = document.getElementById("respbody");
-  statusEl.textContent = "Sending…";
-  statusEl.className = "resp-status pending";
+  statusEl.textContent = "Sending…"; statusEl.className = "resp-status pending";
   bodyEl.textContent = "// Waiting for sandbox response…";
   setTimeout(() => {
-    statusEl.textContent = "200 OK · 214ms";
-    statusEl.className = "resp-status ok";
+    statusEl.textContent = "200 OK · 214ms"; statusEl.className = "resp-status ok";
     bodyEl.textContent = e.resp;
   }, 650);
 }
 
-// ---- dashboard bars ----
-const barData = [
-  {l:"Mon", v:62},{l:"Tue", v:80},{l:"Wed", v:48},{l:"Thu", v:95},
-  {l:"Fri", v:70},{l:"Sat", v:40},{l:"Sun", v:55}
+const barData = [{l:"Mon",v:62},{l:"Tue",v:80},{l:"Wed",v:48},{l:"Thu",v:95},{l:"Fri",v:70},{l:"Sat",v:40},{l:"Sun",v:55}];
+document.getElementById("barsChart").innerHTML = barData.map(b => '<div class="bar" style="height:' + b.v + '%;"><span class="bl">' + b.l + '</span></div>').join("");
+
+const faqs = [
+  ["What is the purpose of the developer portal?","The portal is a central hub for discovering, testing, and integrating ABHI's APIs — covering documentation, credentials, and a sandbox environment in one place."],
+  ["How do I get access to the APIs?","Create a free account, and you'll get a Client ID and Client Secret immediately for the sandbox environment. Production access follows once your business agreement is signed."],
+  ["What programming languages are supported?","Sample code is available in cURL, Node.js, PHP, Java, Ruby, and .NET for every endpoint."],
+  ["What is the sandbox environment?","A fully isolated environment using synthetic test data, so you can validate your integration without touching real customer data or moving real money."],
+  ["Is there a cost to use the sandbox?","No. Creating an account and testing in the sandbox is free. Commercial terms apply once you move to production."],
+  ["How do I get support during integration?","Reach out any time through the contact form below — our developer support team responds within one business day."],
+  ["How is production access different from sandbox?","Production access requires a signed partner agreement and a completed security/compliance review. Once approved, you'll generate a separate production Client ID and Secret per app."]
 ];
-document.getElementById("barsChart").innerHTML = barData.map(b => (
-  '<div class="bar" style="height:' + b.v + '%;"><span class="bl">' + b.l + '</span></div>'
+document.getElementById("faqList").innerHTML = faqs.map((f,i) => (
+  '<div class="faq-item" id="faq-' + i + '">' +
+    '<div class="faq-q" onclick="toggleFaq(' + i + ')"><span>' + f[0] + '</span><span class="faq-chevron">+</span></div>' +
+    '<div class="faq-a"><div class="faq-a-inner">' + f[1] + '</div></div>' +
+  '</div>'
 )).join("");
+function toggleFaq(i){ document.getElementById("faq-" + i).classList.toggle("open"); }
 </script>
 </body>
 </html>
