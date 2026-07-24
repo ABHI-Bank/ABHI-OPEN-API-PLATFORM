@@ -132,6 +132,7 @@
   .env-btn{font-size:11.5px; padding:5px 10px; border-radius:6px; border:1px solid var(--border); background:#fff; color:var(--slate); cursor:pointer;}
   .env-btn.active{background:var(--navy); color:#fff; border-color:var(--navy);}
   .endpoint-url{font-family:'IBM Plex Mono', monospace; font-size:12.5px; background:#FAFBFC; border:1px solid var(--border); border-radius:6px; padding:9px 12px; color:var(--navy); overflow-x:auto;}
+  .wrapper-note{font-size:11.5px; color:var(--slate-light); font-style:italic; margin:8px 0 0; line-height:1.5;}
   table.doc-table{width:100%; border-collapse:collapse; font-size:12px; margin-bottom:6px;}
   table.doc-table th{text-align:left; background:#FAFBFC; color:var(--slate-light); font-family:'IBM Plex Mono', monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:0.03em; padding:8px 10px; border:1px solid var(--border);}
   table.doc-table td{padding:8px 10px; border:1px solid var(--border); color:var(--ink); font-size:12px;}
@@ -684,6 +685,7 @@ function selectEndpoint(id){
     '<div class="doc-h4">Endpoint</div>' +
     '<div class="env-toggle"><span class="env-btn active" data-env="uat">UAT environment</span><span class="env-btn" data-env="prod">Production environment</span></div>' +
     '<div class="endpoint-url" id="endpointUrl">https://sandbox.abhinexus.pk' + e.path + '</div>' +
+    '<p class="wrapper-note">Same request and response contract in both environments \u2014 only the destination changes. Sandbox forwards to synthetic test data; production forwards to ABHI\u2019s real core banking and rail systems.</p>' +
 
     '<div class="doc-h4">Header parameters</div>' +
     table(["Name","Type","Sample value","Description"], headers) +
